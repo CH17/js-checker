@@ -1,1 +1,1 @@
-# js-checker
+# JS Checker

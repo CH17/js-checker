@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Checker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        body {
+            padding-top: 5rem;
+        }
+        .template {
+            padding: 10px 15px;
+            text-align: center;
+        }
+        .box-wrapper{ margin: 5px 10px;}
+        .text_convert{ text-align: center; vertical-align: center;}
+    </style>
+
+
+</head>
+<body>
+
+        <body>
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+              <a class="navbar-brand" href="#">MY CHECKER</a>            
+            </nav>
+            
+            <main role="main" class="container">
+            
+              <div class="template">
+                <h3>Title if needed</h3>
+                <p class="lead">Some descriptive text if needed</p>
+              </div>
+            
+            </main><!-- /.container -->
+
+            <div class="container-fluid box-wrapper">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <textarea class="form-control" id="input_string" rows="16"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <div class="text-center align-middle">
+                            <button type="button" id="btn_text_convert" class=" text_convert btn btn-primary">>></button>
+                        </div>
+                           
+                    </div>
+                    <div class="col-5">
+                        <div class="form-group">
+                          <textarea class="form-control" id="output_string" rows="16"></textarea>
+                        </div>
+                    </div>
+                </div>
+                  
+            </div>
+
+
+    <script>
+        // Add Objects here. 
+        var objects = {
+            'sample1': 'sample1-changed', 
+            'sample2': 'sample2-changed',
+            'sample3': 'sample3-changed',
+            'sample4': 'sample4-changed',
+            'sample5': 'sample5-changed',
+            'sample6': 'sample6-changed',
+            'sample7': 'sample7-changed',
+            '1': 'One'
+        };
+
+
+
+        String.prototype.Converter = function(obj) {
+           
+           var mainStr = this;
+           
+           for (var item in obj) {
+               mainStr = mainStr.replace(new RegExp(item, 'g'), obj[item]);
+           }
+           return mainStr;
+       };
+
+
+        document.getElementById("btn_text_convert").addEventListener("click", initConvert);
+        
+        function initConvert(){
+            var str= document.getElementById("input_string").value;
+            if(str){
+                document.getElementById("output_string").innerHTML = str.Converter(objects);
+            }else{
+                alert("Empty");
+            }
+        }
+
+    </script>
+    
+</body>
+</html>
